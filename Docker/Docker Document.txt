@@ -1,0 +1,50 @@
+#イメージ確認
+ - docker images
+
+#Dokcerログイン
+ - docker login
+	username : wbseo
+	password : d****0**8
+	
+#イメージ取得
+ - docker pull <REPOSITORY>
+ 
+#コンテナの稼働状況を確認
+ - docker ps
+
+#コンテナの稼働
+ - docker run -it -d --name ubuntu1604 ubuntu:16.04
+ - docker exec -it ubuntu1604 /bin/bash
+
+#コンテナから抜く
+ - ctrl + p, q
+
+#コンテナへの再度ログイン
+ - docker attach <CONTAINER ID>
+
+#コンテナの終了
+ - exit
+
+#コンテナの起動
+ - docker start <CONTAINER IDまたはNAME>
+ 
+#コンテナの停止
+ - docker stop <CONTAINER IDまたはNAME>
+
+#コンテナの削除
+- docker rm [コンテナID]
+
+#イメージの削除
+ - docker rmi [イメージID]
+ - docker image prune(TAG<none>の場合)
+
+#コンテナの保存
+ - docker commit -m "test" <コンテナID> <イメージID>:TAG
+ 
+#Dockerクラウドにプッシュ
+ - docker tag local-image:tagname new-repo:tagname
+ - docker push new-repo:tagname
+
+#Dockerの容量拡張
+ - docker-machine rm default
+ - docker-machine create -d virtualbox --virtualbox-disk-size "100000" default (※100GB)
