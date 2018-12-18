@@ -57,7 +57,7 @@ class SQLHandler:
 		self.cursor.execute(sql)
 		self.conn.commit()
 
-	def update(self, sql):
+	def updateItem(self, sql):
 		
 		self.cursor.execute(sql)
 		self.conn.commit()
@@ -76,16 +76,16 @@ class SQLHandler:
 		# 接続を閉じる
 		connect.close()
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-# 	db_connect = SQLHandler("root", "dnqls0618", "test_db")
+	db_connect = SQLHandler("root", "your password", "test_db")
 
-# 	db_connect.dbConnect()
+	db_connect.dbConnect()
 
-# 	sql = 'select * from users'
-# 	item = [1, "wb_seo", "wb_seo@phase1.co.jp"]
+	sql = 'select * from users'
+	item = [1, "example", "example@example.co.jp"]
 
-# 	db_connect.insertItem(item)
-# 	result = db_connect.selectItem(sql)
+	db_connect.insertItem(item)
+	result = db_connect.selectItem(sql)
 
-# 	print(result)
+	print(result)
