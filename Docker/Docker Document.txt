@@ -40,6 +40,9 @@
 
 #コンテナの保存
  - docker commit -m "test" <コンテナID> <イメージID>:TAG
+
+#ファイルのコピー
+ - docker cp my.cnf <コンテナID>:/etc/my.cnf
  
 #Dockerクラウドにプッシュ
  - docker tag local-image:tagname new-repo:tagname
