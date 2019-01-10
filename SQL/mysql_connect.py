@@ -2,7 +2,6 @@ import MySQLdb
 import mysql.connector
 
 class SQLHandler:
-
 	def __init__(self, user_name, user_password, db_name):
 		
 		self.user_name = user_name

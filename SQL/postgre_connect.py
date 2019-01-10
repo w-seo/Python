@@ -1,7 +1,7 @@
 import psycopg2
 
 class SQLHandler:
-
+	
 	def __init__(self, user_name, user_password, db_name):
 		
 		self.user_name = user_name
