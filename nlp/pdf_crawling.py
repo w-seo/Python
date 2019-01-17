@@ -41,7 +41,7 @@ def url_connect(list_number, page_number):
     #HTMLパーサーについて警告が出る場合は、第二引数にパーサーを指定する
 
     td = soup.find_all("td", class_="width_hs_pass") # tdタグでかつclassがwidth_hs_passのものをすべて抽出
-    path = "./" + str(list_number) + "_" + str(page_number) + "_report/"
+    path = "対象の保存パス"
 
     return td, path
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     list_number = 2
     page_number = 1
 
-    search_url = "http://www.courts.go.jp"
+#     search_url = "絶対パスが必要場合"
 
     try :
         while(True):
