@@ -1,6 +1,7 @@
 import os
 import time
 import requests
+import argparse
 
 from bs4 import BeautifulSoup
 
@@ -47,8 +48,15 @@ def url_connect(list_number, page_number):
 
 if __name__ == "__main__":
 
-    list_number = 2
-    page_number = 1
+    parser = argsparse.ArgumentParser(description="crowling pdf")
+
+    parser.add_argument('list_number', help = "list number")
+    parser.add_argument('page_number', help = "page number")
+
+    args = parser.parse_args()
+
+    list_number = int(args.list_number)
+    page_number = int(args.page_number)
 
 #     search_url = "絶対パスが必要場合"
 
