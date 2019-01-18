@@ -43,12 +43,15 @@ def url_connect(list_number, page_number):
 
     td = soup.find_all("td", class_="width_hs_pass") # tdタグでかつclassがwidth_hs_passのものをすべて抽出
     path = "対象の保存パス"
+    
+    if not os.path.isdir(path): # 保存先のディレクトリがなければディレクトリを作成
+                os.mkdir(path)
 
     return td, path
 
 if __name__ == "__main__":
 
-    parser = argsparse.ArgumentParser(description="crowling pdf")
+    parser = argparse.ArgumentParser(description="crowling pdf")
 
     parser.add_argument('list_number', help = "list number")
     parser.add_argument('page_number', help = "page number")
@@ -63,9 +66,6 @@ if __name__ == "__main__":
     try :
         while(True):
             td, path = url_connect(list_number, page_number)
-
-            if not os.path.isdir(path): # 保存先のディレクトリがなければディレクトリを作成
-                os.mkdir(path)
 
             print(list_number, page_number)
 
