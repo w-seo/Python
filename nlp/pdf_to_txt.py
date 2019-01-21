@@ -10,8 +10,8 @@ import os
 import binascii as bia
 
 # Please change for your environment
-inputPDFDir = r'C:\\Users\\woobi\\opencv\\pdf\\'
-outputTXTDir = r'C:\\Users\\woobi\\opencv\\images\\'
+inputPDFDir = r'C:\\Users\\ユーザー名\\opencv\\pdf\\'
+outputTXTDir = r'C:\\Users\\ユーザー名\\opencv\\images\\'
 
 def save_image(lt_image, page_number, images_folder):
     """ from http://denis.papathanasiou.org/archive/2010.08.04.post.pdf """
