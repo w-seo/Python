@@ -8,7 +8,7 @@ from sys import argv
 
 fontname = 'icr'
 language = 'eng'
-directory = "C:\\Users\\woobi\\opencv\\nlp\\images\\tiff_images\\"
+directory = "C:\\Users\\ユーザー名\\opencv\\nlp\\images\\tiff_images\\"
 
 # print 'Tesseract Font Builder - assumes training TIFFs and boxfiles already created'
 # print 'Note: Only up to 32 .tiff files are supported for training purposes'
