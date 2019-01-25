@@ -52,7 +52,7 @@ def model_train(X, y):
 
     model.fit(X, y, batch_size=32, epochs=150)
 
-    model.save(MODEL_SAVE_DIR + 'lions_cnn_20190115.h5')
+    model.save(MODEL_SAVE_DIR + 'モデル名.h5')
 
     return model
 
