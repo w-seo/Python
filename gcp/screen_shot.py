@@ -1,5 +1,5 @@
 import argparse
-import os, sys, glob
+import os, sys, glob, time
 import requests
 
 from datetime import datetime
@@ -43,22 +43,25 @@ def screen_shot(site_url):
 
        options = Options()
        options.binary_location = '/usr/bin/google-chrome'
+       # Display size free
        options.add_argument('--headless')
        # Chrome secret mode
        options.add_argument('--incognito')
-       # Locale setting = Japan
-       options.add_experimental_option('prefs', {'intl.accept_languages': 'jp_JP'})
+       # Web site dialog skip
+       options.add_argument('user-agent=Mozilla/5.0 (X11, Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) scripts.py Safari/537.21')
 
        driver = webdriver.Chrome(chrome_options=options)
        driver.get(site_url)
 
+       time.sleep(2)
+
        # Display full size
-       page_width = driver.execute_script('return document.body.scrollWidth')
+       #page_width = driver.execute_script('return document.body.scrollWidth')
        # Display full size
        page_height = driver.execute_script('return document.body.scrollHeight')
 
        # capture image size
-       driver.set_window_size(page_width, page_height)
+       driver.set_window_size(WINDOW_WIDTH_SIZE, page_height)
        # image save path
        driver.save_screenshot(SAVE_IMG_PATH + str(savetimestamp) + '.png')
 
