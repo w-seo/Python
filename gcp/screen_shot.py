@@ -2,7 +2,7 @@ import argparse
 import os, sys, glob
 import requests
 
-#from datetime import datetime
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from setting import *
@@ -38,7 +38,8 @@ def network_check():
 def screen_shot(site_url):
 
    try:
-       #Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+       # Create timestamp
+       savetimestamp = int(datetime.utcnow().timestamp() * 1000)
 
        options = Options()
        options.binary_location = '/usr/bin/google-chrome'
@@ -59,10 +60,11 @@ def screen_shot(site_url):
        # capture image size
        driver.set_window_size(page_width, page_height)
        # image save path
-       driver.save_screenshot(SAVE_IMG_PATH + 'screenshot.png')
+       driver.save_screenshot(SAVE_IMG_PATH + str(savetimestamp) + '.png')
 
        # Web driver close
        driver.quit()
+
    except Exception as ex:
        print(ex)
 
@@ -76,9 +78,11 @@ def storage_upload():
 
        # Search image file and storage upload
        #img = "/home/so_p04323/test/image_shot/screenshot.png"
-       for img in glob.glob(SAVE_IMG_PATH+'*.png'):
-          #print(img)
-          blob_upload(client=client, file_path=img, bucket_name=BUCKET_NAME)
+
+       # File exits check
+       if os.path.exists(SAVE_IMG_PATH):
+           for img in glob.glob(SAVE_IMG_PATH+'*.png'):
+               blob_upload(client=client, file_path=img, bucket_name=BUCKET_NAME)
 
    except Exception as ex:
        print(ex)

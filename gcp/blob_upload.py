@@ -34,6 +34,8 @@ def blob_upload(client, file_path, bucket_name):
        # Upload file path
        blob.upload_from_filename(file_path)
 
+       os.remove(file_path)
+
    except Exception as ex:
        print(ex)
 
