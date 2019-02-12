@@ -1,12 +1,14 @@
 import argparse
 import os, sys, glob, time
 import requests
+import subprocess
 
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from setting import *
 from storage_test import *
+from logging import getLogger, StreamHandler, Formatter
 
 def url_exits_check(check_response):
    # Input url exits check
@@ -35,6 +37,16 @@ def network_check():
 
    return False
 
+def exist_mkdir_check(folder_path):
+
+   #if the folder does not exist, it create a folder
+   try:
+       if os.path.isdir(folder_path) == False:
+           subprocess.call(['mkdir', folder_path])
+
+   except Exception as ex:
+       print(ex)
+
 def screen_shot(site_url):
 
    try:
@@ -53,16 +65,21 @@ def screen_shot(site_url):
        driver = webdriver.Chrome(chrome_options=options)
        driver.get(site_url)
 
-       time.sleep(2)
+       # Site loading waiting
+       time.sleep(5)
 
        # Display full size
        #page_width = driver.execute_script('return document.body.scrollWidth')
        # Display full size
-       page_height = driver.execute_script('return document.body.scrollHeight')
+       #page_height = driver.execute_script('return document.body.scrollHeight')
 
-       # capture image size
-       driver.set_window_size(WINDOW_WIDTH_SIZE, page_height)
-       # image save path
+       # Capture image size
+       driver.set_window_size(WINDOW_WIDTH_SIZE, WINDOW_HEIGHT_SIZE)
+
+       # Save path exist check
+       exist_mkdir_check(folder_path=SAVE_IMG_PATH)
+
+       # Image save path
        driver.save_screenshot(SAVE_IMG_PATH + str(savetimestamp) + '.png')
 
        # Web driver close
