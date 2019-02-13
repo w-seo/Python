@@ -121,7 +121,7 @@ def storage_upload():
    try:
        # GCP Client exits check
        #if client_check() == True:
-       client = client_check()
+       client = storage_client_check()
        #print("Exist client")
 
        # Search image file and storage upload
@@ -130,7 +130,7 @@ def storage_upload():
        # File exits check
        if os.path.exists(SAVE_IMG_PATH):
            for img in glob.glob(SAVE_IMG_PATH+'*.png'):
-               blob_upload(client=client, file_path=img, bucket_name=BUCKET_NAME)
+               storage_img_upload(storage_client=client, file_path=img, bucket_name=BUCKET_NAME)
 
    except Exception as ex:
        print(ex)
