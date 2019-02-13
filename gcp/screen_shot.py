@@ -2,13 +2,41 @@ import argparse
 import os, sys, glob, time
 import requests
 import subprocess
+import logging
 
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from setting import *
 from storage_test import *
-from logging import getLogger, StreamHandler, Formatter
+from logging import getLogger, FileHandler, StreamHandler, Formatter
+
+# Log file name initialize
+logger = getLogger('Logging Test')
+
+# Setting th log level
+logger.setLevel(logging.DEBUG)
+
+# Log file save path
+file_handler = FileHandler(LOG_FILE_SAVE_PATH + 'exe_log_message.log')
+file_handler.setLevel(logging.DEBUG)
+
+# Log console output
+stream_handler = StreamHandler()
+stream_handler.setLevel(logging.DEBUG)
+
+# Log output format setting
+handler_format = Formatter('%(asctime)s:%(lineno)d:%(levelname)s:%(message)s')
+
+stream_handler.setFormatter(handler_format)
+file_handler.setFormatter(handler_format)
+
+# Logger handler set
+logger.addHandler(stream_handler)
+logger.addHandler(file_handler)
+
+# Log output test
+logger.debug("Logging Test")
 
 def url_exits_check(check_response):
    # Input url exits check
