@@ -36,7 +36,7 @@ def blob_upload(client, file_path, bucket_name):
 
        os.remove(file_path)
 
-   except Exception as ex:
-       print(ex)
+   except gcloud.exceptions.GCloudError as e:
+       print(e)
 
 #if __name__=="__main__":
