@@ -11,7 +11,7 @@ from setting import *
 from storage_test import *
 from logging import getLogger, FileHandler, StreamHandler, Formatter
 
-# Log initialize
+# Log file name initialize
 logger = getLogger('Logging Test')
 
 # Setting th log level
@@ -39,12 +39,15 @@ logger.addHandler(file_handler)
 #logger.debug("Logging Test")
 
 def url_exits_check(check_response):
+
    # Input url exits check
    try:
        if "text/html" in check_response.headers["content-type"]:
+           logger.info(URL_EXIST_MESSAGE)
            return True
+
    except Exception as ex:
-       print(ex)
+       logger.error(URL_EXIST_ERROR_MESSAGE)
 
    return False
 
@@ -58,10 +61,12 @@ def network_check():
 
    try:
        _ = requests.get(network_check_url, timeout=timeout)
+
+       logger.info(NETWORK_CONNECT_MESSAGE)
        return True
 
    except requests.ConnectionError:
-      print("Network do not Connection")
+      logger.error(NETWORK_CONNECT_ERROR_MESSAGE)
 
    return False
 
@@ -70,10 +75,14 @@ def exist_mkdir_check(folder_path):
    #if the folder does not exist, it create a folder
    try:
        if os.path.isdir(folder_path) == False:
+           logger.info(FILDER_EXIST_ERROR_MESSAGE)
            subprocess.call(['mkdir', folder_path])
+           logger.info(FOLDER_CREATE_MESSAGE)
+
+       logger.info(FOLDER_EXIST_MESSAGE)
 
    except Exception as ex:
-       print(ex)
+       logger.error(FOLDER_CREATE_ERROR_MESSAGE)
 
 def screen_shot(site_url):
 
@@ -110,11 +119,13 @@ def screen_shot(site_url):
        # Image save path
        driver.save_screenshot(SAVE_IMG_PATH + str(savetimestamp) + '.png')
 
+       logger.info(SCREEN_SHOT_SUCCESS_MESSAGE)
+
        # Web driver close
        driver.quit()
 
    except Exception as ex:
-       print(ex)
+       logger.error(SCREEN_SHOT_FAIL_MESSAGE)
 
 def storage_upload():
 
@@ -133,7 +144,7 @@ def storage_upload():
                storage_img_upload(storage_client=client, file_path=img, bucket_name=BUCKET_NAME)
 
    except Exception as ex:
-       print(ex)
+       logger.error(ex)
 
 if __name__=="__main__":
 
@@ -159,4 +170,4 @@ if __name__=="__main__":
            storage_upload()
 
         except Exception as ex:
-           print(ex)
+           logger.error(ex)

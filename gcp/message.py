@@ -1,3 +1,20 @@
+"------------------screen_shot.py---------------------------"
+URL_EXIST_MESSAGE = "that url exist!"
+URL_EXIST_ERROR_MESSAGE = "Sorry, that url does not exist!"
+
+NETWORK_CONNECT_MESSAGE = "network connecting!"
+NETWORK_CONNECT_ERROR_MESSAGE = "Sorry, network not connecting!"
+
+FOLDER_CREATE_MESSAGE = "Success, create folder!"
+FOLDER_CREATE_ERROR_MESSAGE = "Sorry, that folder can not create!"
+
+FOLDER_EXIST_MESSAGE = "that folder exist!"
+FOLDER_EXIST_ERROR_MESSAGE = "Sorry, that folder does not exist!"
+
+SCREEN_SHOT_SUCCESS_MESSAGE = "Success, screen shot!"
+SCREEN_SHOT_FAIL_MESSAGE = "Sorry, screnn shot fail!"
+
+"------------------storage_upload.py------------------------"
 STORAGE_CLIENT_EXIST_MESSAGE = "that storage client exist!"
 STORAGE_CLIENT_EXSIT_ERROR_MESSAGE = "that storage client dost not exist!"
 
