@@ -11,7 +11,7 @@ from setting import *
 from storage_test import *
 from logging import getLogger, FileHandler, StreamHandler, Formatter
 
-# Log file name initialize
+# Log initialize
 logger = getLogger('Logging Test')
 
 # Setting th log level
@@ -32,11 +32,11 @@ stream_handler.setFormatter(handler_format)
 file_handler.setFormatter(handler_format)
 
 # Logger handler set
-logger.addHandler(stream_handler)
+#logger.addHandler(stream_handler)
 logger.addHandler(file_handler)
 
 # Log output test
-logger.debug("Logging Test")
+#logger.debug("Logging Test")
 
 def url_exits_check(check_response):
    # Input url exits check
