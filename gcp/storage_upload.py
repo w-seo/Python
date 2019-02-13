@@ -9,8 +9,7 @@ from logging import getLogger, FileHandler, StreamHandler, Formatter
 logger = getLogger("Logging Test")
 
 def storage_client_check():
-
-   try:
+    try:
        # Storage check
        client = storage.Client()
 
@@ -18,14 +17,13 @@ def storage_client_check():
            logger.info(STORAGE_CLIENT_EXIST_MESSAGE)
            return client
 
-   except exceptions.NotFound:
+    except exceptions.NotFound:
        logger.error(STORAGE_CLIENT_EXIST_ERROR_MESSAGE)
 
-   return False
+    return False
 
 def datastore_client_check():
-
-   try:
+    try:
        # Datastore check
        ds_client = datastore.Client()
 
@@ -33,38 +31,35 @@ def datastore_client_check():
            logger.info(DATA_STORE_CLIENT_EXIST_MESSAGE)
            return ds_client
 
-   except exceptions.NotFound:
+    except exceptions.NotFound:
        logger.error(DATA_STORE_CLIENT_EXIST_ERROR_MESSAGE)
 
 def storage_bucket_check(storage_client, bucket_name):
-
-   try:
+    try:
        bucket = storage_client.get_bucket(bucket_name)
        logger.info(BUCKET_EXIST_MESSAGE)
 
        return bucket
 
-   except exceptions.NotFound:
+    except exceptions.NotFound:
        logger.error(BUCKET_EXIST_ERROR_MESSAGE)
 
-   return False
+    return False
 
 def create_bucket(storage_client, bucket_name):
-
-   try:
+    try:
        bucket = storage_client.create_bucket(bucket_name)
        logger.info(BUCKET_CREATE_MESSAGE)
 
        return bucket
 
-   except exceptions.NotFound:
+    except exceptions.NotFound:
        logger.error(BUCKET_CREATE_ERROR_MESSAGE)
 
 def storage_img_upload(storage_client, file_path, bucket_name):
+    upload_file_name = []
 
-   upload_file_name = []
-
-   try:
+    try:
        # Bucket check
        bucket = storage_bucket_check(storage_client, bucket_name)
 
@@ -88,7 +83,7 @@ def storage_img_upload(storage_client, file_path, bucket_name):
 
        os.remove(file_path)
 
-   except exceptions.NotFound:
+    except exceptions.NotFound:
        logger.error(BUCKET_UPLOAD_ERROR_MESSAGE)
 
 #if __name__=="__main__":
