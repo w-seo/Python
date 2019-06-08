@@ -3,7 +3,7 @@
 このGithubは本人が個人的に勉強していることをアップロードさせて頂く予定です。
 主な分野はAI、機械学習になります。後はIoTやクラウドに関することも載せるつもりです。
 
-Qiita：https://qiita.com/wb_seo
+Qiita：https://qiita.com/Raphael_de_murl
 Twitter：https://twitter.com/Raphael_de_murl
 
 個人が運用しているブログなのでもしご興味ある方はぜひご拝見お願い致します。
